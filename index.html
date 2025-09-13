@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lalbabu Singh | Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        /* Dark Theme Styles */
+        html.dark {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #e2e2e2;
+            --accent-color: #00ff7f; /* Neon Green */
+            --card-border: #333;
+            --shadow-light: rgba(0, 0, 0, 0.2);
+        }
+        /* Light Theme Styles */
+        html.light {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f0f0f0;
+            --text-primary: #000000;
+            --text-secondary: #333333;
+            --accent-color: #007bff; /* Vibrant Blue */
+            --card-border: #ccc;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+        }
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+        }
+        .header {
+            background-color: var(--bg-secondary);
+        }
+        .nav-link {
+            position: relative;
+            color: var(--text-secondary);
+            transition: all 0.3s ease-in-out;
+            transform: translateY(0);
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease-in-out;
+        }
+        .nav-link:hover {
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--card-border);
+            transition: all 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px var(--shadow-light);
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+            color: var(--text-primary);
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 70%;
+            height: 3px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease-in-out;
+        }
+        .group:hover .section-title::after {
+            width: 100%;
+        }
+        .accent-text {
+            color: var(--accent-color);
+        }
+        .text-white-light {
+            color: var(--text-primary);
+        }
+        .text-gray-400-light {
+            color: var(--text-secondary);
+        }
+        .contact-link {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body class="bg-primary text-primary">
+
+    <!-- Header and Navigation -->
+    <header class="header shadow-xl rounded-b-[30px] sticky top-0 z-50">
+        <div class="container mx-auto p-4 flex justify-center items-center">
+            <nav class="flex items-center space-x-8 md:space-x-10">
+                <a href="#home" class="nav-link font-medium">Home</a>
+                <a href="#about" class="nav-link font-medium">About</a>
+                <a href="#skills" class="nav-link font-medium">Skills</a>
+                <a href="#projects" class="nav-link font-medium">Projects</a>
+                <a href="#contact" class="nav-link font-medium">Contact</a>
+                <a href="path/to/your/resume.pdf" download="Lalbabu_Singh_Resume.pdf" class="px-6 py-2 bg-accent-color text-black rounded-full font-bold shadow-lg hover:opacity-80 transition-colors duration-200">Download CV</a>
+            </nav>
+            <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-800 transition-colors duration-200 ml-8">
+                <!-- Moon/Sun Icon for Theme Toggle -->
+                <svg id="moon-icon" class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                <svg id="sun-icon" class="hidden w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><path d="M12 4a1 1 0 0 0-1 1v2a1 1 0 0 0 2 0V5a1 1 0 0 0-1-1zm0 14a1 1 0 0 0 1 1v2a1 1 0 0 0-2 0v-2a1 1 0 0 0 1-1zM5 12a1 1 0 0 0-1-1H2a1 1 0 0 0 0 2h2a1 1 0 0 0 1-1zM19 12a1 1 0 0 0-1-1h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 1-1zM6.34 6.34a1 1 0 0 0 .71-.29l1.41-1.41a1 1 0 0 0-1.42-1.42L5.63 4.63a1 1 0 0 0 .71.71zm11.32 11.32a1 1 0 0 0 .71-.29l1.41-1.41a1 1 0 0 0-1.42-1.42L17.63 17.63a1 1 0 0 0 .71.71zm0-11.32a1 1 0 0 0-.71-.71l-1.41 1.41a1 1 0 1 0 1.42 1.42L17.63 6.34a1 1 0 0 0 .71-.71zM6.34 17.66a1 1 0 0 0-.71-.71l-1.41 1.41a1 1 0 1 0 1.42 1.42L6.34 17.66z"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 md:py-16">
+
+        <!-- Hero Section -->
+        <section id="home" class="flex flex-col items-center justify-center min-h-[calc(100vh-6rem)] md:min-h-[calc(100vh-8rem)] text-center">
+            <p class="text-lg text-gray-400-light mb-2">Hello, I'm</p>
+            <h1 class="text-5xl md:text-7xl font-bold accent-text mb-4 leading-tight">Lalbabu Singh</h1>
+            <p class="text-xl md:text-2xl text-text-primary font-semibold mb-6">Full Stack Developer</p>
+            <p class="text-base text-gray-400-light leading-relaxed mb-6 max-w-2xl mx-auto">
+                A passionate MERN Full Stack Developer focused on building innovative, efficient, and scalable web applications that solve real-world problems.
+            </p>
+            <div class="flex items-center space-x-4 justify-center">
+                <!-- Social Media Links -->
+                <a href="https://linkedin.com" target="_blank" class="text-gray-400-light hover:accent-text transition-colors">LinkedIn</a>
+                <a href="https://github.com" target="_blank" class="text-gray-400-light hover:accent-text transition-colors">GitHub</a>
+                <a href="https://twitter.com" target="_blank" class="text-gray-400-light hover:accent-text transition-colors">Twitter</a>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="card rounded-[30px] p-8 md:p-12 shadow-xl mb-12">
+            <h2 class="text-3xl font-bold mb-8 section-title group">About Me</h2>
+            <p class="text-gray-400-light leading-relaxed text-sm md:text-base">
+                Hello, I'm Lalbabu Singh, currently pursuing a B.Tech in Computer Science from Gurgaon University (expected in 2026).
+                <br><br>
+                I possess strong problem-solving skills, excellent communication abilities, and a keen interest in building web applications that solve real-world problems.
+                <br><br>
+                I completed a 2-month internship where I gained hands-on experience in HTML, CSS, JavaScript, React, Python, and MongoDB, working on real-world projects, and learning best practices for software development.
+                <br><br>
+                My goal is to become a proficient full-stack developer, providing clean, efficient, and scalable solutions and continuously learning and adopting new technologies.
+            </p>
+        </section>
+
+        <!-- My Skills Section -->
+        <section id="skills" class="card rounded-[30px] p-8 md:p-12 shadow-xl mb-12">
+            <h2 class="text-3xl font-bold mb-8 section-title group">My Skills</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <!-- Skill Card: HTML -->
+                <div class="flex flex-col items-center justify-center p-4 rounded-xl hover:bg-secondary transition-colors">
+                    <span class="text-4xl accent-text mb-2">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3.267 19.387c-1.545-2.675-2.527-5.748-2.903-9.032l6.17-2.126v7.382l-3.267 3.776zm13.767-7.859c-1.127 4.192-3.324 7.82-6.284 10.32l2.42-2.798v-7.521c.883-.004 1.765.045 2.628-.001.077-.004.14-.029.213-.028zM12 1.092c-5.111 0-9.263 4.152-9.263 9.263 0 1.956.608 3.765 1.637 5.257.946-1.581 2.05-3.364 3.324-5.074l-2.09-2.42c.883-.496 1.847-.79 2.87-.941.341-2.923 1.847-5.26 3.659-6.402zm0 2.219c-.312 0-.624.032-.934.093l-1.396 2.418c.247.017.498.026.75.026.345 0 .69-.026 1.032-.075l.548-2.462zm-6.239 6.845l2.296 2.656c-1.258 1.488-2.425 2.946-3.414 4.398-1.026-1.428-1.748-3.056-2.13-4.839.992-.477 1.996-.867 3.248-2.215z"></path></svg>
+                    </span>
+                    <p class="font-bold text-gray-300-light">HTML</p>
+                </div>
+                <!-- Skill Card: CSS -->
+                <div class="flex flex-col items-center justify-center p-4 rounded-xl hover:bg-secondary transition-colors">
+                    <span class="text-4xl accent-text mb-2">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3.267 19.387c-1.545-2.675-2.527-5.748-2.903-9.032l6.17-2.126v7.382l-3.267 3.776zm13.767-7.859c-1.127 4.192-3.324 7.82-6.284 10.32l2.42-2.798v-7.521c.883-.004 1.765.045 2.628-.001.077-.004.14-.029.213-.028zM12 1.092c-5.111 0-9.263 4.152-9.263 9.263 0 1.956.608 3.765 1.637 5.257.946-1.581 2.05-3.364 3.324-5.074l-2.09-2.42c.883-.496 1.847-.79 2.87-.941.341-2.923 1.847-5.26 3.659-6.402zm0 2.219c-.312 0-.624.032-.934.093l-1.396 2.418c.247.017.498.026.75.026.345 0 .69-.026 1.032-.075l.548-2.462zm-6.239 6.845l2.296 2.656c-1.258 1.488-2.425 2.946-3.414 4.398-1.026-1.428-1.748-3.056-2.13-4.839.992-.477 1.996-.867 3.248-2.215z"></path></svg>
+                    </span>
+                    <p class="font-bold text-gray-300-light">CSS</p>
+                </div>
+                <!-- Skill Card: JavaScript -->
+                <div class="flex flex-col items-center justify-center p-4 rounded-xl hover:bg-secondary transition-colors">
+                    <span class="text-4xl accent-text mb-2">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3.267 19.387c-1.545-2.675-2.527-5.748-2.903-9.032l6.17-2.126v7.382l-3.267 3.776zm13.767-7.859c-1.127 4.192-3.324 7.82-6.284 10.32l2.42-2.798v-7.521c.883-.004 1.765.045 2.628-.001.077-.004.14-.029.213-.028zM12 1.092c-5.111 0-9.263 4.152-9.263 9.263 0 1.956.608 3.765 1.637 5.257.946-1.581 2.05-3.364 3.324-5.074l-2.09-2.42c.883-.496 1.847-.79 2.87-.941.341-2.923 1.847-5.26 3.659-6.402zm0 2.219c-.312 0-.624.032-.934.093l-1.396 2.418c.247.017.498.026.75.026.345 0 .69-.026 1.032-.075l.548-2.462zm-6.239 6.845l2.296 2.656c-1.258 1.488-2.425 2.946-3.414 4.398-1.026-1.428-1.748-3.056-2.13-4.839.992-.477 1.996-.867 3.248-2.215z"></path></svg>
+                    </span>
+                    <p class="font-bold text-gray-300-light">JavaScript</p>
+                </div>
+                <!-- Skill Card: React -->
+                <div class="flex flex-col items-center justify-center p-4 rounded-xl hover:bg-secondary transition-colors">
+                    <span class="text-4xl accent-text mb-2">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 24c-6.627 0-12-5.373-12-12s5.373-12 12-12 12 5.373 12 12-5.373 12-12 12zm0-23c-6.071 0-11 4.929-11 11s4.929 11 11 11 11-4.929 11-11-4.929-11-11-11zm.63 15.908l-5.352-9.27c-.201-.349-.1-.796.248-.996.349-.201.796-.1.996.249l4.577 7.934 4.577-7.934c.2-.349.647-.449.996-.249.349.2.449.647.248.996l-5.352 9.27c-.234.405-.632.607-1.03.607-.398-.001-.796-.201-1.03-.606z"></path></svg>
+                    </span>
+                    <p class="font-bold text-gray-300-light">React</p>
+                </div>
+                <!-- Skill Card: Node.js -->
+                <div class="flex flex-col items-center justify-center p-4 rounded-xl hover:bg-secondary transition-colors">
+                    <span class="text-4xl accent-text mb-2">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3.267 19.387c-1.545-2.675-2.527-5.748-2.903-9.032l6.17-2.126v7.382l-3.267 3.776zm13.767-7.859c-1.127 4.192-3.324 7.82-6.284 10.32l2.42-2.798v-7.521c.883-.004 1.765.045 2.628-.001.077-.004.14-.029.213-.028zM12 1.092c-5.111 0-9.263 4.152-9.263 9.263 0 1.956.608 3.765 1.637 5.257.946-1.581 2.05-3.364 3.324-5.074l-2.09-2.42c.883-.496 1.847-.79 2.87-.941.341-2.923 1.847-5.26 3.659-6.402zm0 2.219c-.312 0-.624.032-.934.093l-1.396 2.418c.247.017.498.026.75.026.345 0 .69-.026 1.032-.075l.548-2.462zm-6.239 6.845l2.296 2.656c-1.258 1.488-2.425 2.946-3.414 4.398-1.026-1.428-1.748-3.056-2.13-4.839.992-.477 1.996-.867 3.248-2.215z"></path></svg>
+                    </span>
+                    <p class="font-bold text-gray-300-light">Node.js</p>
+                </div>
+                <!-- New Skill Cards -->
+                <!-- Skill Card: DSA -->
+                <div class="flex flex-col items-center justify-center p-4 rounded-xl hover:bg-secondary transition-colors">
+                    <span class="text-4xl accent-text mb-2">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3.267 19.387c-1.545-2.675-2.527-5.748-2.903-9.032l6.17-2.126v7.382l-3.267 3.776zm13.767-7.859c-1.127 4.192-3.324 7.82-6.284 10.32l2.42-2.798v-7.521c.883-.004 1.765.045 2.628-.001.077-.004.14-.029.213-.028zM12 1.092c-5.111 0-9.263 4.152-9.263 9.263 0 1.956.608 3.765 1.637 5.257.946-1.581 2.05-3.364 3.324-5.074l-2.09-2.42c.883-.496 1.847-.79 2.87-.941.341-2.923 1.847-5.26 3.659-6.402zm0 2.219c-.312 0-.624.032-.934.093l-1.396 2.418c.247.017.498.026.75.026.345 0 .69-.026 1.032-.075l.548-2.462zm-6.239 6.845l2.296 2.656c-1.258 1.488-2.425 2.946-3.414 4.398-1.026-1.428-1.748-3.056-2.13-4.839.992-.477 1.996-.867 3.248-2.215z"></path></svg>
+                    </span>
+                    <p class="font-bold text-gray-300-light">DSA</p>
+                </div>
+                <!-- Skill Card: Java -->
+                <div class="flex flex-col items-center justify-center p-4 rounded-xl hover:bg-secondary transition-colors">
+                    <span class="text-4xl accent-text mb-2">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3.267 19.387c-1.545-2.675-2.527-5.748-2.903-9.032l6.17-2.126v7.382l-3.267 3.776zm13.767-7.859c-1.127 4.192-3.324 7.82-6.284 10.32l2.42-2.798v-7.521c.883-.004 1.765.045 2.628-.001.077-.004.14-.029.213-.028zM12 1.092c-5.111 0-9.263 4.152-9.263 9.263 0 1.956.608 3.765 1.637 5.257.946-1.581 2.05-3.364 3.324-5.074l-2.09-2.42c.883-.496 1.847-.79 2.87-.941.341-2.923 1.847-5.26 3.659-6.402zm0 2.219c-.312 0-.624.032-.934.093l-1.396 2.418c.247.017.498.026.75.026.345 0 .69-.026 1.032-.075l.548-2.462zm-6.239 6.845l2.296 2.656c-1.258 1.488-2.425 2.946-3.414 4.398-1.026-1.428-1.748-3.056-2.13-4.839.992-.477 1.996-.867 3.248-2.215z"></path></svg>
+                    </span>
+                    <p class="font-bold text-gray-300-light">Java</p>
+                </div>
+                <!-- Skill Card: Python -->
+                <div class="flex flex-col items-center justify-center p-4 rounded-xl hover:bg-secondary transition-colors">
+                    <span class="text-4xl accent-text mb-2">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3.267 19.387c-1.545-2.675-2.527-5.748-2.903-9.032l6.17-2.126v7.382l-3.267 3.776zm13.767-7.859c-1.127 4.192-3.324 7.82-6.284 10.32l2.42-2.798v-7.521c.883-.004 1.765.045 2.628-.001.077-.004.14-.029.213-.028zM12 1.092c-5.111 0-9.263 4.152-9.263 9.263 0 1.956.608 3.765 1.637 5.257.946-1.581 2.05-3.364 3.324-5.074l-2.09-2.42c.883-.496 1.847-.79 2.87-.941.341-2.923 1.847-5.26 3.659-6.402zm0 2.219c-.312 0-.624.032-.934.093l-1.396 2.418c.247.017.498.026.75.026.345 0 .69-.026 1.032-.075l.548-2.462zm-6.239 6.845l2.296 2.656c-1.258 1.488-2.425 2.946-3.414 4.398-1.026-1.428-1.748-3.056-2.13-4.839.992-.477 1.996-.867 3.248-2.215z"></path></svg>
+                    </span>
+                    <p class="font-bold text-gray-300-light">Python</p>
+                </div>
+                <!-- Skill Card: MongoDB -->
+                <div class="flex flex-col items-center justify-center p-4 rounded-xl hover:bg-secondary transition-colors">
+                    <span class="text-4xl accent-text mb-2">
+                        <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3.267 19.387c-1.545-2.675-2.527-5.748-2.903-9.032l6.17-2.126v7.382l-3.267 3.776zm13.767-7.859c-1.127 4.192-3.324 7.82-6.284 10.32l2.42-2.798v-7.521c.883-.004 1.765.045 2.628-.001.077-.004.14-.029.213-.028zM12 1.092c-5.111 0-9.263 4.152-9.263 9.263 0 1.956.608 3.765 1.637 5.257.946-1.581 2.05-3.364 3.324-5.074l-2.09-2.42c.883-.496 1.847-.79 2.87-.941.341-2.923 1.847-5.26 3.659-6.402zm0 2.219c-.312 0-.624.032-.934.093l-1.396 2.418c.247.017.498.026.75.026.345 0 .69-.026 1.032-.075l.548-2.462zm-6.239 6.845l2.296 2.656c-1.258 1.488-2.425 2.946-3.414 4.398-1.026-1.428-1.748-3.056-2.13-4.839.992-.477 1.996-.867 3.248-2.215z"></path></svg>
+                    </span>
+                    <p class="font-bold text-gray-300-light">MongoDB</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="card rounded-[30px] p-8 md:p-12 shadow-xl mb-12">
+            <h2 class="text-3xl font-bold mb-8 section-title group">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card 1: Food Delivery App -->
+                <div class="p-6 bg-secondary rounded-2xl transition-transform transform hover:scale-105 shadow-md hover:shadow-xl border border-card-border">
+                    <h3 class="text-xl font-bold mb-2 text-text-primary">Food Delivery App</h3>
+                    <p class="text-gray-400-light text-sm mb-4 leading-relaxed">
+                        A full-fledged food delivery application built using the MERN stack. It includes user authentication, real-time order tracking, and integration with a payment gateway.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-2 justify-end">
+                        <a href="#" class="inline-block text-center px-4 py-2 text-sm bg-gray-700 text-white rounded-full font-medium shadow-sm hover:bg-gray-600 transition-colors duration-200">Live Demo</a>
+                        <a href="#" class="inline-block text-center px-4 py-2 text-sm bg-gray-300 text-gray-900 rounded-full font-medium shadow-sm hover:bg-gray-400 transition-colors duration-200">Source Code</a>
+                    </div>
+                </div>
+                <!-- Project Card 2: Portfolio Website -->
+                <div class="p-6 bg-secondary rounded-2xl transition-transform transform hover:scale-105 shadow-md hover:shadow-xl border border-card-border">
+                    <h3 class="text-xl font-bold mb-2 text-text-primary">Portfolio Website</h3>
+                    <p class="text-gray-400-light text-sm mb-4 leading-relaxed">
+                        A clean, professional, and responsive personal portfolio website designed and developed from scratch with React and Tailwind CSS.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-2 justify-end">
+                        <a href="#" class="inline-block text-center px-4 py-2 text-sm bg-gray-700 text-white rounded-full font-medium shadow-sm hover:bg-gray-600 transition-colors duration-200">Live Demo</a>
+                        <a href="#" class="inline-block text-center px-4 py-2 text-sm bg-gray-300 text-gray-900 rounded-full font-medium shadow-sm hover:bg-gray-400 transition-colors duration-200">Source Code</a>
+                    </div>
+                </div>
+                <!-- Project Card 3: E-Commerce Store -->
+                <div class="p-6 bg-secondary rounded-2xl transition-transform transform hover:scale-105 shadow-md hover:shadow-xl border border-card-border">
+                    <h3 class="text-xl font-bold mb-2 text-text-primary">E-Commerce Store</h3>
+                    <p class="text-gray-400-light text-sm mb-4 leading-relaxed">
+                        An online e-commerce store developed with a React and MongoDB backend. The application features user authentication, a comprehensive product catalog, and a secure checkout process.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-2 justify-end">
+                        <a href="#" class="inline-block text-center px-4 py-2 text-sm bg-gray-700 text-white rounded-full font-medium shadow-sm hover:bg-gray-600 transition-colors duration-200">Live Demo</a>
+                        <a href="#" class="inline-block text-center px-4 py-2 text-sm bg-gray-300 text-gray-900 rounded-full font-medium shadow-sm hover:bg-gray-400 transition-colors duration-200">Source Code</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="card rounded-[30px] p-8 md:p-12 shadow-xl mb-12 text-center">
+            <h2 class="text-3xl font-bold mb-4 section-title group">Contact Me</h2>
+            <p class="text-gray-400-light mb-6 text-base md:text-lg">Interested in working together or have any questions? Feel free to reach out:</p>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
+                <p class="font-semibold text-text-primary">Email: <a href="mailto:anandk19570@gmail.com" class="contact-link hover:underline">anandk19570@gmail.com</a></p>
+                <p class="font-semibold text-text-primary">Phone: <a href="tel:9113382363" class="contact-link hover:underline">9113382363</a></p>
+            </div>
+            <a href="mailto:anandk19570@gmail.com" class="inline-block px-8 py-3 bg-accent-color text-black rounded-full shadow-lg hover:opacity-80 transition-colors duration-200">Send an Email</a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-gray-500-light text-sm">
+        © 2025 Lalbabu Singh
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const html = document.documentElement;
+            const moonIcon = document.getElementById('moon-icon');
+            const sunIcon = document.getElementById('sun-icon');
+            
+            // Check for saved theme in localStorage
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                html.classList.remove('dark', 'light');
+                html.classList.add(savedTheme);
+            } else {
+                // Default to dark theme if no preference is saved
+                html.classList.add('dark');
+            }
+
+            function updateIcons(theme) {
+                if (theme === 'dark') {
+                    moonIcon.classList.remove('hidden');
+                    sunIcon.classList.add('hidden');
+                } else {
+                    moonIcon.classList.add('hidden');
+                    sunIcon.classList.remove('hidden');
+                }
+            }
+
+            // Initial icon update based on current theme
+            updateIcons(html.classList.contains('dark') ? 'dark' : 'light');
+
+            themeToggleBtn.addEventListener('click', () => {
+                const currentTheme = html.classList.contains('dark') ? 'dark' : 'light';
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                html.classList.remove(currentTheme);
+                html.classList.add(newTheme);
+                localStorage.setItem('theme', newTheme);
+                
+                updateIcons(newTheme);
+            });
+        });
+    </script>
+</body>
+</html>
